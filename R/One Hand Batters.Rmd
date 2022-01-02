@@ -1,0 +1,57 @@
+---
+title: "One hand batter"
+output: html_document
+---
+
+
+```{r, echo=FALSE, include=FALSE, warning=FALSE}
+library(tidyverse)
+
+library(janitor)
+
+
+left_path <- "data/Splits Leaderboard Data vs LHP.csv"
+
+right_path <- "data/Splits Leaderboard Data vs RHP.csv"
+
+data_left <- read_csv(left_path) %>% clean_names()
+
+data_right <- read_csv(right_path) %>% clean_names()
+```
+
+<!-- Lockout. The time of the year where your significant others and friends, who do not enjoy baseball, can get a little more time with you, fellow reader. -->
+
+<!-- Well, we are here to fix that -->
+
+<!-- We had a full season! Just that already brings me joy, even if it was still Covid impacted. We had cases, we had vaccination issues and we had injuries. But we also had one full season of data again. No more 60 game season -->
+
+What a year for baseball, folks. After a dreadful, but necessary, 60-game season in 2020, we got our long awaited full 162-game season. And nothing brings more join to an analytical person than a nice sample size. 
+[image of baseball sample]
+
+We can now dig deeper on what we saw or did not see last year. We can go through the data, or splits of it which is my case, and check out what we saw. We can see who we know it is good, who sometimes was good, 
+
+```{r echo=FALSE, include=TRUE, warning=FALSE}
+data_left %>% 
+  filter(ops > 1 & w_rc_2 > 150) %>% 
+  ggplot(aes(x = ops, y = w_rc_2)) +
+  geom_point(aes(color = name, size = pa, colour = name))+
+  geom_text(aes(label = name, size = 90))+ 
+  guides(colour="none", size = guide_legend(title="PA"))+
+  ylab('wRC+')+
+  xlab('OPS')
+```
+
+
+
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+1
+```
+
+
+
+
+
+
